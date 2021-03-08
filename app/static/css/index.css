@@ -1,0 +1,11 @@
+
+  .container-lg.divBotoes {
+    text-align: right;
+  }
+
+  .carouselImgEffect {
+    filter: brightness(60%), blur(1px);
+    -webkit-filter: brightness(60%) blur(1px);
+    
+  }
+  

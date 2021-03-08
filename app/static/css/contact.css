@@ -1,0 +1,13 @@
+.navPrincipal {
+    height: 200px;
+}
+
+.tituloPrincipal {
+    margin-bottom: 300px;
+}
+
+.tituloPrincipal.mensagem {
+    margin-top: -50px !important;
+    margin-bottom: 0px !important;
+
+}

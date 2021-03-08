@@ -1,0 +1,66 @@
+
+
+*  {
+    margin:0;
+    padding:0;
+}
+
+html, body {height:100%;}
+
+.tituloPrincipal {
+    background-color: #47e247;
+    font-size: 28px;
+    
+}
+
+.geral {
+    min-height:100%;
+    position:relative;
+    width:800px;
+}
+.tituloSecundario {
+
+  padding: 15px 20px 15px 20px ;
+  text-align: center;
+  vertical-align: middle;
+  height: 46px;
+  background-color: #5cbc5ead;
+  clear: left;
+  font-size: 0.8em;
+
+}  
+footer {
+    position:absolute;
+    bottom:0;
+    width:100%;
+}
+a {
+  text-decoration: none;
+  color: #000000;
+}
+.content {overflow:hidden;}
+.aside {width:200px;}
+.fleft {float:left;}
+.fright {float:right;}
+
+
+.corpo , .areaLogin {
+width: auto;
+font-family: 'Noto Sans JP', sans-serif;
+
+}
+
+.cabecalho {
+  text-align: center;
+  font-size: 2.4em;
+  background-color: #47e247;
+  
+}
+.tituloPrincipal {
+  padding: 0.2em;
+}
+
+.rodape {
+  background-color: #1e621e;
+  height: 35px;
+}

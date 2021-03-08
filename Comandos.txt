@@ -1,0 +1,4 @@
+run.py runserver
+run.py db init
+run.py db migratre
+run.py db upgrade

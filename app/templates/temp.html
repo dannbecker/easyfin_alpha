@@ -1,0 +1,43 @@
+<!DOCTYPE html><html lang="pt-br">
+
+<head>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/homebase.css') }}">
+      <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/login.css') }}">
+      <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+      <link rel="preconnect" href="https://fonts.gstatic.com">
+      <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;700;800;900&display=swap" rel="stylesheet">  
+    </head>
+  <body class="corpo">
+    
+    <div class="backgroundImage"></div>
+    <div class="text-mask">
+      <h1>Log-in</h1>
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" data-toggle="dropdown">
+          Dropdown button
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+          <li><a class="dropdown-item" href="#">Action</a></li>
+          <li><a class="dropdown-item" href="#">Another action</a></li>
+          <li><a class="dropdown-item" href="#">Something else here</a></li>
+        </ul>
+      </div>
+    </div>  
+
+
+  <footer class="rodape">
+    
+
+  </footer>
+
+  <script src="../static/js/jquery-3.6.0.min.js"></script>
+  <script src="../static/js/bootstrap.bundle.min.js"></script>
+  <script>
+    $(document).ready(function(){
+       $('.dropdown-toggle').dropdown()
+   });
+  </script>
+  
+  </body>

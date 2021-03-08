@@ -1,7 +1,10 @@
-from app import db
+from app import db, login_manager
 
-    
-class Alunos(db.Model):
+@login_manager.user_loader
+def load_user(id):
+    return Aluno.query.filter_by(id=id).first()
+
+class Aluno(db.Model):
     __tablename__ = "alunos"
 
     id = db.Column(db.Integer, primary_key=True)
@@ -9,15 +12,30 @@ class Alunos(db.Model):
     nome = db.Column(db.String)
     password = db.Column(db.String)
 
+    @property
+    def is_authenticated(self):
+        return True
+    
+    @property
+    def is_active(self):
+        return True
+
+    @property
+    def is_anonymous(self):
+        return False
+
+    def get_id(self):
+        return str(self.id)
+
     def __init__(self, email, nome, password):
         self.email = email
         self.nome = nome
         self.password = password
     
-    def __rpr__(self):
+    def __repr__(self):
         return "<Aluno %r>" % self.nome
     
-class Professores(db.Model):
+class Professor(db.Model):
     __tablename__ = "professores"
 
     id = db.Column(db.Integer, primary_key=True)
@@ -32,7 +50,7 @@ class Professores(db.Model):
         self.password = password
         self.disciplina = disciplina
     
-    def __rpr__(self):
+    def __repr__(self):
         return "<Professor %r>" % self.nome
 
 """class Pessoa(db.Model):

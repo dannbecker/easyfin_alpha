@@ -1,9 +1,44 @@
-
-.tituloPrincipal {
-  font-family: 'Kanit', 'sans-serif';
-
+  .tituloPrincipal {
+    font-family: 'Kanit', 'sans-serif';
+    font-weight:700;
+    color: white;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  }
+  
+.navPrincipal {
+  background-color: #61e263;
+  font-size: 35px;
+  padding: 5px;
 }
 
 .main {
   font-family: 'Noto Sans JP', 'sans-serif';
 }
+
+.divRodape {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  color: white;
+  background-color: #34b437;
+  font-family: 'Kanit', 'sans-serif';
+
+}
+
+a:link {
+    text-decoration: none !important;
+  }
+  
+  a:visited {
+    text-decoration: none !important;
+  }
+  
+  a:hover {
+    text-decoration: none !important;
+  }
+  
+  a:active {
+    text-decoration: none !important;
+  }  

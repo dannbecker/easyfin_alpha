@@ -1,0 +1,99 @@
+.backgroundImage {
+    background-image: url("../img/login-background.jpg");
+    height: 100vh;
+    filter: blur(8px);
+    -webkit-filter: blur(8px);
+    background-position: center;
+    background-repeat: no-repeat;
+    Background-size: cover;
+}
+
+.maskBackgroundImage {
+    
+    filter: blur(8px);
+    -webkit-filter: blur(8px);
+
+}
+
+.alertForm {
+    text-shadow: 0px 0 rgb(255, 0, 0), 0 0px rgb(255, 0, 0), 0px 0 rgb(255, 0, 0), 0 0px rgb(2255, 0, 0) !important;
+}
+
+.titleBlock {
+    background-color: #61e263 !important;
+    border: green;
+    border-radius: 15px;
+    margin-bottom: 20px;
+}
+
+.loginTitle {
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+@media (min-width: 240px) {
+    .alertForm {
+        height: 70px;
+    }
+}
+
+@media (min-width: 364px) {
+    .alertForm {
+        height: 50px;
+    }
+}
+.text-mask {
+    background-color: rgba(255, 255, 255, 0.39); 
+    color: white;
+    font-weight: bold;
+    border: 3px solid #f1f1f1;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  
+  /* now center the mask*/
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    padding: 20px;
+    text-align: center;
+  }
+
+
+  @media (min-width: 200px) {
+    .text-mask {
+        width: 90%;
+    }
+
+}
+
+  @media (min-width: 300px) {
+    .text-mask {
+        width: 80%;
+    }
+}
+
+  @media (min-width: 414px) {
+    .text-mask {
+        width: 70%;
+    }
+}
+
+  @media (min-width: 600px) {
+    .text-mask {
+        width: 50%;
+    }
+}
+
+  @media (min-width: 750px) {
+    .text-mask {
+        width: 40%;
+    }
+}
+
+@media (min-width: 1000px) {
+    .text-mask {
+        width: 30%;
+    }
+}
+

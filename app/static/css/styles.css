@@ -1,0 +1,98 @@
+
+.areaLogin {
+    height:1.2em;
+    padding: 15px 20px 15px 20px ;
+    text-align: right;
+    vertical-align: middle;
+    background: linear-gradient(#66000000 1px, #5cbc5ead 10px);
+    /* background-color: #5cbc5ead; */
+
+}
+.botaoLogin, .botaocontato {
+    margin: 0 0 0 20px;
+    width: 150px;
+    height: 40px;
+    border-radius: 8px;
+    border-color: #111111;
+    font-size: 20px;
+    font-family: 'Noto Sans JP', sans-serif;
+    transition: 1s;
+  
+}
+.botaoLogin:hover , .botaocontato:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+    transition: 1s;
+    
+}
+.logoColegio {
+    width: 200px;
+    width: 100px;
+    float: left;
+    margin-left: 35px;
+
+}
+.corpo {
+    background: linear-gradient(#cccccc 10% ,#fefefe 90%, #cccccc);
+    width: auto;
+    text-align: center;
+}
+.mainBody{
+    height: 479px;
+}
+
+
+@media only screen and (max-width: 423px) {
+    
+    .botaoLogin, .botaocontato {
+    margin: 0 0 0 20px;
+    width: 150px;
+    height: 40px;
+    border-radius: 8px;
+    border-color: #111111;
+    font-size: 20px;
+    font-family: 'Noto Sans JP', sans-serif;
+    transition: 1s;
+    }
+    
+    .areaLogin {
+    height:2.5em;
+    padding: 15px 20px 15px 20px ;
+    text-align: right;
+    vertical-align: middle;
+    background-color: #5cbc5ead;
+    transition: 1s;
+
+    }
+  
+
+    
+}
+    
+@media only screen and (max-width: 345px) {
+    
+    .botaoLogin, .botaocontato {
+    margin: 0 0 0 20px;
+    width: 150px;
+    height: 40px;
+    border-radius: 8px;
+    border-color: #111111;
+    font-size: 20px;
+    font-family: 'Noto Sans JP', sans-serif;
+    transition: 1s;
+    }
+    
+    .areaLogin {
+    height:2.5em;
+    padding: 15px 20px 15px 20px ;
+    text-align: right;
+    vertical-align: middle;
+    background-color: #5cbc5ead;
+    transition: 1s;
+
+    }
+  
+
+    
+}
+    

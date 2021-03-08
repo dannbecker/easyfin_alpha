@@ -2,29 +2,39 @@
 
 <head>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <link rel="stylesheet" href="{{ url_for('static', filename="css/styles.css") }}">
-      <link rel="stylesheet" href="{{ url_for('static', filename="css/padrao.css") }}">
+      <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/homebase.css') }}">
+      <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/index.css') }}">
+      <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
       <link rel="preconnect" href="https://fonts.gstatic.com">
-
       <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300&display=swap" rel="stylesheet">
-
+      <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;700;800;900&display=swap" rel="stylesheet">
 </head>
   <body class="corpo">
-      <h1 class="tituloPrincipal" > EasyFin  </h1>
-    <header class="cabecalho">
-        <nav class="areaLogin">
-            <button class="botaoLogin" type="button" name="botaoLogin"><a href="log-in"> Log-in </a></button>
-            <button class= "botaocontato" type="button" name="botaocontato"> Contate-nos </button>
- </nav>
-    </header>
+    <nav class="navbar navPrincipal">
+      <div class="container-fluid">
+        <h2 class="tituloPrincipal">
+          EasyFin
+        </h2>
+        <div class="container-lg divBotoes">
+          {% if current_user.is_authenticated %}
+          <button type="button" class="btn btn-success" onclick="window.location.href='/logout'">Sair</button>
+          {% else %}
+          <button type="button" class="btn btn-success" onclick="window.location.href='/login'">Entrar</button>
+          {% endif %}
+          <button type="button" class="btn btn-success " onclick="window.location.href='/contact'">Contate-nos</button>
+        </div>
+      </div>
+    </nav>  
+
   <main class="mainBody">
-
-
   </main>
-  <footer class="rodape">
-
+  <footer class="divRodape"> Rodapé
+    </div>
 
   </footer>
+
+  <script src="../static/js/jquery-3.6.0.min.js"></script>
+  <script src="../static/js/bootstrap.bundle.min.js"></script>
 
 
 
