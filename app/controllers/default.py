@@ -1,7 +1,7 @@
 from app import app, db
-from flask import render_template, flash, redirect, url_for
+from flask import render_template, flash, redirect, request, url_for, jsonify
 from flask_login import login_user, logout_user
-from app.models.forms import loginForm
+from app.models.forms import loginForm, addEscola
 from app.models.tables import Aluno, Professor
 
 @app.route("/index")
@@ -24,9 +24,10 @@ def login():
     form = loginForm()
 
     if form.validate_on_submit():
-        aluno = Aluno.query.filter_by(email=form.email.data).first()
-        if aluno and aluno.password == form.password.data:
-            login_user(aluno)
+        global professor
+        professor = Professor.query.filter_by(email=form.email.data).first()
+        if professor and professor.password == form.password.data:
+            login_user(professor)
             return redirect(url_for("dashboard"))
         else:
             flash("E-mail e/ou senha inválidos.")
@@ -64,9 +65,10 @@ def perfil(user):
     return render_template('perfil.html')
 
 
-@app.route("/alunos")
+@app.route("/alunos", methods=["POST", "GET"])
 def alunos():
-    return render_template('alunos.html')
+    form = addEscola()
+    return render_template('alunos.html', form=form)
 
 
 @app.route("/professores")
@@ -78,6 +80,24 @@ def professores():
 def noticias():
     return render_template('noticias.html')
 
+
 @app.route("/configuracoes")
 def configuracoes():
     return render_template('configuracoes.html')
+
+
+@app.route("/not_found")
+def notfound():
+    return render_template('not_found.html')
+
+
+@app.route('/test', methods=['GET', 'POST'])
+def test():
+    # GET request
+    if request.method == 'GET':
+        message = {'greeting':'Hello from Flask!'}
+        return jsonify(message)  # serialize and use JSON headers
+    # POST request
+    if request.method == 'POST':
+        print(request.get_json())  # parse as JSON
+        return 'Sucesss', 200

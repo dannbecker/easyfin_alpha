@@ -12,12 +12,14 @@ db = SQLAlchemy(app)
 # Declaro o tratamento de migração, recebe a aplicação e o banco de dados
 migrate = Migrate(app, db)
 
-# Manager para cuidar dos comendos para inicializar a aplicação
+# Manager para cuidar dos comandos para inicializar a aplicação
 manager = Manager(app)
 manager.add_command('db', MigrateCommand)
 
+# Manager para cuidar de uma sessão de login
 login_manager = LoginManager() 
 login_manager.init_app(app)
 
+# Importação dos modelos de formulário e tabelas; Importação dos controllers padrões
 from app.models import tables, forms
 from app.controllers import default

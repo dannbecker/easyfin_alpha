@@ -2,7 +2,7 @@ from app import db, login_manager
 
 @login_manager.user_loader
 def load_user(id):
-    return Aluno.query.filter_by(id=id).first()
+    return Professor.query.filter_by(id=id).first()
 
 class Aluno(db.Model):
     __tablename__ = "alunos"
@@ -44,6 +44,21 @@ class Professor(db.Model):
     password = db.Column(db.String)
     disciplina = db.Column(db.String)
 
+    @property
+    def is_authenticated(self):
+        return True
+    
+    @property
+    def is_active(self):
+        return True
+
+    @property
+    def is_anonymous(self):
+        return False
+
+    def get_id(self):
+        return str(self.id)
+
     def __init__(self, email, nome, password, disciplina):
         self.email = email
         self.nome = nome
@@ -52,6 +67,47 @@ class Professor(db.Model):
     
     def __repr__(self):
         return "<Professor %r>" % self.nome
+
+class Escola(db.Model):
+    __tablename__ = "escolas"
+
+    id = db.Column(db.Integer, primary_key=True)
+    nome = db.Column(db.String)
+    cep = db.Column(db.String)
+    rua = db.Column(db.String)
+    complemento = db.Column(db.String)
+    cidade = db.Column(db.String)
+    estado = db.Column(db.String)
+
+    @property
+    def is_authenticated(self):
+        return True
+    
+    @property
+    def is_active(self):
+        return True
+
+    @property
+    def is_anonymous(self):
+        return False
+
+    def get_id(self):
+        return str(self.id)
+
+    def __init__(self, nome, cep, rua, complemento, cidade, estado):
+        self.nome = nome
+        self.cep = cep
+        self.rua = rua
+        self.complemento = complemento
+        self.cidade = cidade
+        self.estado = estado        
+    
+    def __repr__(self):
+        return "<Escola %r>" % self.nome
+
+
+
+
 
 """class Pessoa(db.Model):
     __tablename__ = "pessoas"
