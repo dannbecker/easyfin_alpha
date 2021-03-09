@@ -1,126 +1,70 @@
-{% if current_user.is_authenticated %}
-<!DOCTYPE html><html lang="pt-br">
-<head>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/homebase.css') }}">
-      <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/index.css') }}">
-      <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/dashboard.css') }}">
-      <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
-      <link rel="preconnect" href="https://fonts.gstatic.com">
-      <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300&display=swap" rel="stylesheet">
-      <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;700;800;900&display=swap" rel="stylesheet">
-</head>
-  <body class="corpo">
-      <nav class="navbar navPrincipal">
-        <div class="container-fluid">
-                <h2 class="tituloPrincipal">EasyFin 
-                    <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">
-                        <i class="bi bi-card-list">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" class="bi bi-card-list" viewBox="0 0 16 16">
-                                <path d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h13zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z"/>
-                                <path d="M5 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 5 8zm0-2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0 5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-1-5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zM4 8a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm0 2.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z"/>
-                              </svg>
-                        </i>
-                    </a>
-                </h2>
-            <div class="btn-group">
-                <button type="button" class="btn btn-default dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-toggle="dropdown">
-                    <i class="bi bi-person-fill"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
-                        <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
-                    </svg></i>
-                    <span class="glyphicon glyphicon-user"></span> {{ current_user.nome }}
-                </button>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="{{ url_for('perfil', user=current_user.nome) }}">Meu perfil</a></li>
-                    <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="{{ url_for('logout') }}">Sair</a></li>
-                </ul>     
-            </div>
-        </div>
-    </nav>
-    <div id="wrapper">
-        <div id="sidebar-wrapper">
-            <ul class="sidebar-nav">
-                <li>
-                    <a href="{{ url_for('dashboard')}}">Dashboard</a>
-                </li>
-                <li>
-                    <a href="{{ url_for('alunos')}}">Alunos</a>
-                </li>
-                <li>
-                    <a href="{{ url_for('professores')}}">Professores</a>
-                </li>
-                <li>
-                    <a href="{{ url_for('noticias')}}">Notícias</a>
-                </li>
-                <li>
-                    <a href="{{ url_for('configuracoes')}}">Configurações</a>
-                </li>
-            </ul>
-        </div>
-        <div id="page-content-wrapper">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-3">
-                        <h1>Inserir Aluno</h1>
-                            <form>
-                                <label>CEP:</label>
-                                <div class="input-group mb-3">
-                                    <input id="#cep"type="text" class="form-control" placeholder="Digite o CEP" aria-describedby="basic-addon2">
-                                    <div class="input-group-append">
-                                      <button class="btn btn-outline-secondary" type="button">Button</button>
-                                    </div>
-                                  </div>
-                            </form>
-                            <form action="" method="POST">
-                                {{ form.csrf_token }}
-                                <div class="form-group">
-                                <label>Nome da escola:</label>
-                                {{ form.nome(class="form-control stringInput", placeholder="Nome da escola", id="nome") }}
-                                </div>
-                                <div class="form-group">
-                                    <label>Rua:</label>
-                                    {{ form.rua(class="form-control stringInput", id="rua") }}
-                                </div>
-                                <div class="form-group">
-                                    <label>Complemento:</label>
-                                    {{ form.complemento(class="form-control stringInput", id="complemento") }}
-                                </div>
-                                <div class="form-group">
-                                    <label>Cidade:</label>
-                                    {{ form.cidade(class="form-control stringInput", id="cidade") }}
-                                </div>
-                                <div class="form-group">
-                                    <label>Estado:</label>
-                                    {{ form.estado(class="form-control stringInput", id="estado") }}
-                                </div>
-                                <button type="submit" class="btn btn-success tn-default" id="submit" >Registrar</button>
-                            </form>
-                        </div>
-                </div>
-            </div>
-        </div>
- 
-
-    </div>
-
-  <footer>
-
-  </footer>
-
-  
-  <script src="../static/js/jquery-3.6.0.min.js"></script>
-  <script src="../static/js/bootstrap.bundle.min.js"></script>
-  <script src="../static/js/script.js"></script>
-  <script>
-    $("#menu-toggle").click(function(e) {
-    e.preventDefault();
-    $("#wrapper").toggleClass("toggled");
-  });
-  
-  </script>
-  
-
-
-  </body>
-  {% endif %}
+{% extends 'logged-base.html' %}
+{% block contect %}
+<section>
+    <h2>Title 1</h2>
+    <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia
+        voluptas dicta quaerat explicabo? Minus corporis mollitia beatae nisi
+        earum, ut omnis, cum ducimus nesciunt deleniti veniam tenetur
+        exercitationem, odit iure? Lorem ipsum dolor sit amet consectetur
+        adipisicing elit. Eaque ad inventore voluptatem eveniet quibusdam eos
+        accusamus, architecto consequatur? Voluptate deleniti hic quam quos
+        beatae voluptates, quis est animi totam ullam.
+    </p>
+    <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia
+        voluptas dicta quaerat explicabo? Minus corporis mollitia beatae nisi
+        earum, ut omnis, cum ducimus nesciunt deleniti veniam tenetur
+        exercitationem, odit iure? Lorem ipsum dolor sit amet consectetur
+        adipisicing elit. Eaque ad inventore voluptatem eveniet quibusdam eos
+        accusamus, architecto consequatur? Voluptate deleniti hic quam quos
+        beatae voluptates, quis est animi totam ullam.
+    </p>
+    <p>
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempora
+        placeat nobis quisquam, maxime, dolorem aperiam accusamus commodi eius
+        commodi at.
+    </p>
+</section>
+<section>
+    <h2>Title 2</h2>
+    <p>
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempora
+        placeat nobis quisquam, maxime, dolorem aperiam accusamus commodi eius
+        commodi at.
+    </p>
+    <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia
+        voluptas dicta quaerat explicabo? Minus corporis mollitia beatae nisi
+        earum, ut omnis, cum ducimus nesciunt deleniti veniam tenetur
+        exercitationem, odit iure? Lorem ipsum dolor sit amet consectetur
+        adipisicing elit. Eaque ad inventore voluptatem eveniet quibusdam eos
+        accusamus, architecto consequatur? Voluptate deleniti hic quam quos
+        beatae voluptates, quis est animi totam ullam.
+    </p>
+    <p>
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laboriosam
+        molestiae vero dolorum maiores veniam maxime obcaecati recusandae
+        autem assumenda nam vel eum, repellat tenetur at. Dolorem officiis
+        explicabo amet vero.
+    </p>
+</section>
+<section>
+    <h2>Title 3</h2>
+    <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro odio
+        placeat nobis quisquam, maxime, dolorem aperiam accusamus commodi eius
+        iste obcaecati. Mollitia magnam blanditiis asperiores. Voluptatibus
+        molestiae vel perspiciatis animi?
+    </p>
+</section>
+<section>
+    <h2>Title 4</h2>
+    <p>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Architecto,
+        aut necessitatibus, non ab nemo illum adipisci alias sed expedita
+        dicta ut repellendus laborum ratione iusto facilis fugit deleniti
+        neque numquam?
+    </p>
+</section>  
+{% endblock %}

@@ -10,6 +10,7 @@ class Aluno(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String, unique=True)
     nome = db.Column(db.String)
+    sobrenome = db.Column(db.String)
     password = db.Column(db.String)
 
     @property
@@ -27,9 +28,10 @@ class Aluno(db.Model):
     def get_id(self):
         return str(self.id)
 
-    def __init__(self, email, nome, password):
+    def __init__(self, email, nome, sobrenome, password):
         self.email = email
         self.nome = nome
+        self.sobrenome = sobrenome
         self.password = password
     
     def __repr__(self):
@@ -41,6 +43,7 @@ class Professor(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String, unique=True)
     nome = db.Column(db.String)
+    sobrenome = db.Column(db.String)
     password = db.Column(db.String)
     disciplina = db.Column(db.String)
 
@@ -59,14 +62,16 @@ class Professor(db.Model):
     def get_id(self):
         return str(self.id)
 
-    def __init__(self, email, nome, password, disciplina):
+    def __init__(self, email, nome, sobrenome, password, disciplina):
         self.email = email
         self.nome = nome
+        self.sobrenome = sobrenome
         self.password = password
         self.disciplina = disciplina
     
     def __repr__(self):
         return "<Professor %r>" % self.nome
+
 
 class Escola(db.Model):
     __tablename__ = "escolas"
@@ -75,7 +80,9 @@ class Escola(db.Model):
     nome = db.Column(db.String)
     cep = db.Column(db.String)
     rua = db.Column(db.String)
+    numero = db.Column(db.String)
     complemento = db.Column(db.String)
+    bairro = db.Column(db.String)
     cidade = db.Column(db.String)
     estado = db.Column(db.String)
 
@@ -94,11 +101,13 @@ class Escola(db.Model):
     def get_id(self):
         return str(self.id)
 
-    def __init__(self, nome, cep, rua, complemento, cidade, estado):
+    def __init__(self, nome, cep, rua, numero, complemento, bairro, cidade, estado):
         self.nome = nome
         self.cep = cep
         self.rua = rua
+        self.numero = numero
         self.complemento = complemento
+        self.bairro = bairro
         self.cidade = cidade
         self.estado = estado        
     

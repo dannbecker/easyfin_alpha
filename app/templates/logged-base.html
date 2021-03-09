@@ -1,0 +1,95 @@
+{% if current_user.is_authenticated %}
+<!DOCTYPE html><html lang="pt-br">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/homebase.css') }}">
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/sidebar.css') }}">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.materialdesignicons.com/4.9.95/css/materialdesignicons.min.css"/>
+    </head>
+
+<body class="corpo">
+    <nav class="navbar navPrincipal">
+        <div class="container-fluid">
+          <h2 class="tituloPrincipal">EasyFin</h2>
+          <div class="btn-group">
+              <button type="button" class="btn btn-default dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-toggle="dropdown">
+                  <i class="mdi mdi-account" style="font-size: 20px;"></i>
+                  <span class="glyphicon glyphicon-user userFont">{{ current_user.nome }}</span> 
+              </button>
+              <ul class="dropdown-menu userFont">
+                  <li><a class="dropdown-item" href="{{ url_for('perfil', user=current_user.nome) }}">Meu perfil</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="{{ url_for('logout') }}">Sair</a></li>
+              </ul>     
+          </div>
+      </div>
+    </nav>
+        <main class="main">
+			{% block contect %}
+            {% endblock %}
+		</main>
+        <aside class="sidebar">
+			<nav>
+				<ul class="sidebar__nav">
+					<li>
+						<a href="{{ url_for('dashboard') }}" class="sidebar__nav__link">
+							<i class="mdi mdi-monitor-dashboard"></i>
+							<span class="sidebar__nav__text">Dashboard</span>
+						</a>
+					</li>
+					<li>
+						<a href="{{ url_for('professores') }}" class="sidebar__nav__link">
+							<i class="mdi mdi-account-tie"></i>
+							<span class="sidebar__nav__text">Professores</span>
+						</a>
+					</li>
+					<li>
+						<a href="{{ url_for('alunos') }}" class="sidebar__nav__link">
+							<i class="mdi mdi-account-group"></i>
+							<span class="sidebar__nav__text">Alunos</span>
+						</a>
+					</li>
+					<li>
+						<a href="{{ url_for('noticias') }}" class="sidebar__nav__link">
+							<i class="mdi mdi-newspaper-variant-multiple"></i>
+							<span class="sidebar__nav__text">Notícias</span>
+						</a>
+					</li>
+					<li>
+						<a href="{{ url_for('questoes') }}" class="sidebar__nav__link">
+							<i class="mdi mdi-format-superscript"></i>
+							<span class="sidebar__nav__text">Questões</span>
+						</a>
+					</li>
+					<li>
+						<a href="{{ url_for('configuracoes') }}" class="sidebar__nav__link">
+							<i class="mdi mdi-settings"></i>
+							<span class="sidebar__nav__text">Configurações</span>
+						</a>
+					</li>
+				</ul>
+			</nav>
+		</aside>
+    <footer>
+
+    </footer>
+  
+    <script src="../static/js/jquery-3.6.0.min.js"></script>
+    <script src="../static/js/bootstrap.bundle.min.js"></script>
+    <script src="../static/js/script.js"></script>
+    <script>
+      $("#menu-toggle").click(function(e) {
+      e.preventDefault();
+      $("#wrapper").toggleClass("toggled");
+    });
+    </script>
+    
+  
+  
+    </body>
+    {% endif %}

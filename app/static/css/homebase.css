@@ -1,3 +1,7 @@
+:root {
+  --sidebar-width: 4.5em;
+}
+
   .tituloPrincipal {
     font-family: 'Kanit', 'sans-serif';
     font-weight:700;
@@ -9,10 +13,16 @@
   background-color: #61e263;
   font-size: 35px;
   padding: 5px;
+  box-shadow: 0px 5px 10px 0px #707070;
 }
 
 .main {
   font-family: 'Noto Sans JP', 'sans-serif';
+  margin: 20px;
+}
+
+.userFont {
+  font-family: 'Kanit', 'sans-serif';
 }
 
 .divRodape {

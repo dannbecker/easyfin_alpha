@@ -2,7 +2,7 @@ from app import app, db
 from flask import render_template, flash, redirect, request, url_for, jsonify
 from flask_login import login_user, logout_user
 from app.models.forms import loginForm, addEscola
-from app.models.tables import Aluno, Professor
+from app.models.tables import Aluno, Professor, Escola
 
 @app.route("/index")
 @app.route("/")
@@ -67,23 +67,40 @@ def perfil(user):
 
 @app.route("/alunos", methods=["POST", "GET"])
 def alunos():
-    form = addEscola()
-    return render_template('alunos.html', form=form)
+    return render_template('alunos.html')
 
 
-@app.route("/professores")
+@app.route("/professores", methods=["POST", "GET"])
 def professores():
     return render_template('professores.html')
 
 
-@app.route("/noticias")
+@app.route("/noticias", methods=["POST", "GET"])
 def noticias():
     return render_template('noticias.html')
 
 
-@app.route("/configuracoes")
+@app.route("/questoes", methods=["POST", "GET"])
+def questoes():
+    return render_template('questoes.html')
+
+
+@app.route("/configuracoes", methods=["POST", "GET"])
 def configuracoes():
     return render_template('configuracoes.html')
+
+
+@app.route("/escolas", methods=["POST", "GET"])
+def escolas():
+    form = addEscola()
+    if form.validate_on_submit():
+        escola = Escola(form.cep.data, form.nome.data, form.rua.data, form.numero.data, 
+        form.complemento.data, form.bairro.data, form.cidade.data, form.estado.data)
+        db.session.add(escola)
+        db.session.commit()
+    else:
+        print(form.errors)
+    return render_template('escolas.html', form=form)
 
 
 @app.route("/not_found")
@@ -91,13 +108,6 @@ def notfound():
     return render_template('not_found.html')
 
 
-@app.route('/test', methods=['GET', 'POST'])
+@app.route('/logged-base', methods=['GET', 'POST'])
 def test():
-    # GET request
-    if request.method == 'GET':
-        message = {'greeting':'Hello from Flask!'}
-        return jsonify(message)  # serialize and use JSON headers
-    # POST request
-    if request.method == 'POST':
-        print(request.get_json())  # parse as JSON
-        return 'Sucesss', 200
+    return render_template('logged-base.html')
