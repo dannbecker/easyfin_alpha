@@ -1,4 +1,4 @@
-# easyfin_alpha
+# EasyFin (Ver. Alpha)
 [PT-BR]
 O projeto consiste na elaboração de um website para cadastro de alunos e professores para visualização de notícia e cadastramento de questões.
 O projeto está em desenvolvimento, desenvolvido em Python utilizando o Flask no backend, bootstrap, jquery e javascript no frontend.
