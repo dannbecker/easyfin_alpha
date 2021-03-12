@@ -1,10 +1,10 @@
 # EasyFin (Ver. Alpha)
 **[PT-BR]**
-O projeto consiste na elaboração de um website para cadastro de alunos e professores para visualização de notícia e cadastramento de questões.
-O projeto está em desenvolvimento, desenvolvido em Python utilizando o **Flask** no backend, bootstrap, jquery e javascript no frontend.
-O CRUD já está funcional. A utilização de Fetch API também está funcional.
-Realizar uma sessão é possível.
-Existe a verificação de excessões e erros.
+O projeto consiste na elaboração de um website para cadastro de alunos e professores para visualização de notícias e cadastramento de questões. O projeto encontra-se em desenvolvimento, feito em Python utilizando o **Flask** no backend e bootstrap, jquery e javascript no frontend. O banco de dados utilizado é o SQLite.<br>
+* O CRUD já está funcional;<br>
+* A utilização de Fetch API também está funcional;<br>
+* Realizar uma sessão é possível;<br>
+* Existe a verificação de excessões e erros;<br>
 
 # Requirements:
 
