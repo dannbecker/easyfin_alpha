@@ -54,18 +54,36 @@ python run.py db upgrade<br>
 
 **[PT-BR]**
 
-### Passo 1.
+### Passo 1. Instalar o Python
 
 * Vá para <a href="https://www.python.org/downloads/">website do Python e instale a versão 3 ou superior.</a>
 * Durante a instalação, lembre-se de adicionar o Python ao PATH.
 
 
-### Passo 2.
+### Passo 2. Instalar e preparar um ambiente virtual
 
 * Com o Python instalado, abra o prompt de comando do seu sistema operacional e<a href="https://pip.pypa.io/en/stable/installing/"> siga estes passos (para instalar o pip).</a>
 
 * Após instalado o pip, é possível instalar o virtualenv com o seguinte comando:
 
-```python
+```
 pip install virtualenv
 ```
+
+* Agora, abra o prompt de comando dentro da pasta onde foi adicionado este repositório.
+* Execute o seguinte comando:
+```
+virtualenv [nome-do-ambiente-virtual]
+```
+* Exemplo:
+```
+virtualenv venv
+```
+* Agora, abra o prompt de comando dento da pasta: [nome-do-ambiente-virtual]>Scripts>
+* Execute o arquivo activate
+* Pronto, você está dentro do ambiente virtual e pode seguir para o próximo passo.
+
+### Passo 3. Instalação dos pacotes obrigatórios
+
+* Dentro do ambiente virtual, comece a instalar os <a href="# Requirements:">pacotes obrigatórios</a>
+
