@@ -2,48 +2,16 @@
 {% block contect %}
 <div class="row">
     <div class="col-lg-4">
-        <h2 class="subTitulo coluna2">Escolas Cadastradas</h2>
-        <div class="table-responsive">
-            <table class="table" id="rowTable">
-                <thead>
-                    <tr>
-                        <th scope="col">CEP</th>
-                        <th scope="col">Nome</th>
-                        <th scope="col">Número</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for escola in escolas %}
-                    <tr>
-                        <td>{{ escola.cep }}</td>
-                        <td>{{ escola.nome }}</td>
-                        <td>{{ escola.numero }}</td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-        </div>
+        <h2 class="subTitulo">Remover Escola</h2>
     </div>
-    <div class="col-lg-4">
-        <h2 class="subTitulo coluna2">Remover Escola</h2>
-        <form action="" method="POST">
-            {{ form_rmv.csrf_token }}
-            <label>Nome da escola para remover:</label>
-            {{ form_rmv.nome }}
-            <button type="submit" class="btn btn-danger tn-default btnMargins" id="submit" >Deletar</button>
-        </form>
-        {% with messages = get_flashed_messages() %}
-        {% if messages %}
-        <div class="alert alert-danger alertForm" role="alert">
-          <ul class=flashes>
-            {% for message in messages %}
-              <li>{{ message }}</li>
-            {% endfor %}
-          </ul>
-        </div>
-        {% endif %}
-      {% endwith %}
-      
+    <form method="GET" action="">
+        <select name="Cartypes" onchange="this.form.submit()">
+          <option value="0" selected>Select Model</option>
+          {% for escola in escolas %}
+            <option value="{{escola}}">{{escola}}</option>
+          {% endfor %}
+        </select>
+      </form>
 </div>
 <script>
     

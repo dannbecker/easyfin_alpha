@@ -1,0 +1,51 @@
+{% extends 'logged-base.html' %}
+{% block contect %}
+<div class="row">
+    <div class="col-lg-6">
+        <h2 class="subTitulo coluna2">Alunos Cadastrados</h2>
+        <div class="table-responsive">
+            <table class="table" id="rowTable">
+                <thead>
+                    <tr>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Sobrenome</th>
+                        <th scope="col">E-mail</th>
+                        <th scope="col">Disciplina</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for professor in professores %}
+                    <tr>
+                        <td>{{ professor.nome }}</td>
+                        <td>{{ professor.sobrenome }}</td>
+                        <td>{{ professor.email }}</td>
+                        <td>{{ professor.disciplina }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <h2 class="subTitulo coluna2">Remover Professor</h2>
+        <form action="" method="POST">
+            {{ form_rmv.csrf_token }}
+            <label>E-mail cadastrado para remover:</label>
+            {{ form_rmv.email }}
+            <button type="submit" class="btn btn-danger tn-default btnMargins" id="submit" >Deletar</button>
+        </form>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <div class="alert alert-danger alertForm" role="alert">
+        <ul class=flashes>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        </div>
+        {% endif %}
+    {% endwith %}
+    
+    </div>
+</div>
+{% endblock %}

@@ -1,3 +1,77 @@
 {% extends 'logged-base.html' %}
 {% block contect %}
+<div class="row">
+    <div class="col-lg-4">
+        <h2 class="subTitulo">Inserir Professor</h2>
+        <form action="" method="POST">
+            {{ form.csrf_token }}
+            <div class="form-group">
+                <label>Nome:</label>
+                {{ form.nome(class="form-control stringInput", placeholder="Digite o nome", id="nome") }}
+            </div>
+            <div class="form-group">
+                <label>Sobrenome:</label>
+                {{ form.sobrenome(class="form-control stringInput", placeholder="Digite o sobrenome", id="sobrenome") }}
+            </div>
+            <div class="form-group">
+                <label>E-mail:</label>
+                {{ form.email(class="form-control stringInput", placeholder="meuemail@exemplo.com", id="email") }}
+            </div>
+            <div class="form-group">
+                <label>Senha:</label>
+                {{ form.password(class="form-control stringInput", id="password") }}
+            </div>
+            <div class="form-group">
+                <label>Repetir senha:</label>
+                {{ form.confirm(class="form-control stringInput", id="password") }}
+            </div>
+            <div class="form-group">
+                <label>Disciplina:</label>
+                {{ form.disciplina(class="form-control stringInput", id="disciplina") }}
+            </div>
+            <button type="submit" class="btn btn-success tn-default btnMargins" id="submit" >Cadastrar</button>
+        </form>
+            {% if form.errors %}
+            <div class="alert alert-danger alertForm" role="alert">
+                <ul class=flashes>
+                    {% for error in form.email.errors %}
+                    <li>{{ error }}</li>
+                    {% endfor %}
+                    {% for error in form.password.errors %}
+                    <li>{{ error }}</li>
+                    {% endfor %} 
+                </ul>
+            </div>
+            {% endif %}
+
+    </div>
+    <div class="col-lg-6">
+        <h2 class="subTitulo coluna2">Professores Cadastrados</h2>
+        <div class="table-responsive">
+            <table class="table" id="rowTable">
+                <thead>
+                    <tr>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Sobrenome</th>
+                        <th scope="col">E-mail</th>
+                        <th scope="col">Disciplina</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for professor in professores %}
+                    <tr>
+                        <td>{{ professor.nome }}</td>
+                        <td>{{ professor.sobrenome }}</td>
+                        <td>{{ professor.email }}</td>
+                        <td>{{ professor.disciplina }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+</div>
+
 {% endblock %}

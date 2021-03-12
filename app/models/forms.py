@@ -16,9 +16,21 @@ class addAluno(FlaskForm):
     nome = StringField("nome", validators=[DataRequired()])
     sobrenome = StringField("nome", validators=[DataRequired()])
     email = StringField("email", validators=[DataRequired(), Email(message="E-mail inválido.")])
-    password = PasswordField("password", validators=[DataRequired(), EqualTo('confirm', message='Passwords must match')])
+    password = PasswordField("password", validators=[DataRequired(), EqualTo('confirm', message='As senhas não coincidem!')])
     confirm = PasswordField('Repeat Password', validators=[DataRequired()])
+    
 class removeAluno(FlaskForm):
+    email = StringField("email", validators=[DataRequired()])
+
+class addProfessor(FlaskForm):
+    nome = StringField("nome", validators=[DataRequired()])
+    sobrenome = StringField("nome", validators=[DataRequired()])
+    email = StringField("email", validators=[DataRequired(), Email(message="E-mail inválido.")])
+    password = PasswordField("password", validators=[DataRequired(), EqualTo('confirm', message='As senhas não coincidem!')])
+    confirm = PasswordField('Repeat Password', validators=[DataRequired()])
+    disciplina = StringField("disciplina", validators=[DataRequired()])
+    
+class removeProfessor(FlaskForm):
     email = StringField("email", validators=[DataRequired()])
 
 class addEscola(FlaskForm):

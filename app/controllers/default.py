@@ -1,10 +1,10 @@
 from app import app, db
 from flask import render_template, flash, redirect, request, url_for, jsonify
 from flask_login import login_user, logout_user
-from app.models.forms import loginForm, validatePassword, addEscola, removeEscola, addAluno, removeAluno
+from app.models.forms import loginForm, validatePassword, addEscola, removeEscola, addAluno, removeAluno, addProfessor, removeProfessor
 from app.models.tables import Aluno, Professor, Escola
 
-@app.route("/Home")
+@app.route("/home")
 @app.route("/")
 def index():
     return render_template('index.html')
@@ -69,26 +69,15 @@ def alunos():
     form = addAluno()
     if form.validate_on_submit():
         aluno = Aluno(form.email.data, form.nome.data, form.sobrenome.data, form.password.data)
-        db.session.add(aluno)
-        db.session.commit()
-        return redirect(url_for("alunos"))
-    else:
-        flash("As senhas não coincidem!")
-    
-    alunos = Aluno.query.all()
-    form_rmv = removeAluno()
-    if form_rmv.validate_on_submit():
-        aluno = Aluno.query.filter_by(email=form_rmv.email.data).first()
         if aluno:
-            db.session.delete(aluno)   
+            db.session.add(aluno)
             db.session.commit()
-            print("Aluno deletado!")
-            return redirect(url_for("alunos"))
-        else:
-            flash("E-mail não encontrado no banco de dados!")
             print(aluno)
+            return redirect(url_for("alunos"))
 
-    return render_template('alunos.html', alunos=alunos, form=form, form_rmv=form_rmv)
+    alunos = Aluno.query.all()
+
+    return render_template('alunos.html', alunos=alunos, form=form)
 
 @app.route("/remover/alunos", methods=["POST", "GET", "DELETE"])
 def rmvAlunos():
@@ -112,7 +101,36 @@ def rmvAlunos():
 
 @app.route("/professores", methods=["POST", "GET"])
 def professores():
-    return render_template('professores.html')
+    form = addProfessor()
+    if form.validate_on_submit():
+        professor = Professor(form.email.data, form.nome.data, form.sobrenome.data, form.password.data, form.disciplina.data)
+        if professor:
+            db.session.add(professor)
+            db.session.commit()
+            print(professor)
+            return redirect(url_for("professores"))
+
+    professores = Professor.query.all()
+
+    return render_template('professores.html', professores=professores, form=form)
+
+@app.route("/remover/professores", methods=["POST", "GET", "DELETE"])
+def rmvProfessores():
+
+    professores = Professor.query.all()
+    form_rmv = removeProfessor()
+    if form_rmv.validate_on_submit():
+        professor = Professor.query.filter_by(email=form_rmv.email.data).first()
+        if professor:
+            db.session.delete(professor)   
+            db.session.commit()
+            print("Professor deletado!")
+            return redirect(url_for("rmvProfessores"))
+        else:
+            flash("E-mail não encontrado no banco de dados!")
+            print(professor)
+
+    return render_template('remover-professor.html', professores=professores, form_rmv=form_rmv)
 
 
 @app.route("/noticias", methods=["POST", "GET"])
@@ -136,11 +154,12 @@ def escolas():
     if form.validate_on_submit():
         escola = Escola(form.cep.data, form.nome.data, form.rua.data, form.numero.data, 
         form.complemento.data, form.bairro.data, form.cidade.data, form.estado.data)
-        db.session.add(escola)
-        db.session.commit()
-        return redirect(url_for("escolas"))
-    else:
-        print(form.errors)
+        if escola:
+            db.session.add(escola)
+            db.session.commit()
+            return redirect(url_for("escolas"))
+        else:
+            print(form.errors)
     
     escolas = Escola.query.all()
 

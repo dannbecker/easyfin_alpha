@@ -9,6 +9,7 @@
       <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300&display=swap" rel="stylesheet">
       <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;700;800;900&display=swap" rel="stylesheet">
 </head>
+{% if not current_user.is_authenticated %}
   <body class="corpo">
     <nav class="navbar navPrincipal">
       <div class="container-fluid">
@@ -39,3 +40,11 @@
 
 
   </body>
+{% else %}
+
+  {% extends 'dashboard.html' %}
+  {% block contect %}
+  {% endblock %}
+
+{% endif %}
+

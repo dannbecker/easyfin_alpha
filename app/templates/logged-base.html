@@ -1,16 +1,18 @@
-{% if current_user.is_authenticated %}
 <!DOCTYPE html><html lang="pt-br">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/homebase.css') }}">
     <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
-    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/sidebar.css') }}">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.materialdesignicons.com/4.9.95/css/materialdesignicons.min.css"/>
     </head>
+
+{% if current_user.is_authenticated %}
+
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/sidebar.css') }}">
+<link rel="stylesheet" href="https://cdn.materialdesignicons.com/4.9.95/css/materialdesignicons.min.css"/>
 
 <body class="corpo">
     <nav class="navbar navPrincipal">
@@ -107,7 +109,37 @@
     
   
   
-    </body>
-	{% else %}
+</body>
 
-    {% endif %}
+{% else %}
+
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/notFound.css') }}">
+
+<body class="corpo">
+	<nav class="navbar navPrincipal notFound_nav">
+		<div class="container-fluid">
+			<h1 class="tituloPrincipal">
+				EasyFin
+			</h1>
+		</div>
+	</nav>  
+	<h1 class="notFound_title">Ops...</h1>
+	<main class="mainBody notFound_main">
+			
+    <div class="row">
+      <div class="col-lg-7">
+		  <p class="notFound_p">Você não está logado, portanto não pode acessar esta página...</p>
+      </div>
+      <div class="col-lg-4">
+        <img src="{{ url_for('static', filename='img/empty-book.png') }}" class="notFound_img">
+      </div>      
+    </div>
+
+
+  </main>
+		
+	</main>
+	
+</body>
+
+{% endif %}
