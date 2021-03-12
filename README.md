@@ -15,37 +15,37 @@ pip and virtualenv
 
 Packages:
 alembic==1.5.6<br>
-click==7.1.2
-dnspython==2.1.0
-email-validator==1.1.2
-Flask==1.1.2
-Flask-Login==0.5.0
-Flask-Migrate==2.7.0
-Flask-Script==2.0.6
-Flask-SQLAlchemy==2.4.4
-Flask-WTF==0.14.3
-idna==3.1
-itsdangerous==1.1.0
-Jinja2==2.11.3
-Mako==1.1.4
-MarkupSafe==1.1.1
-python-dateutil==2.8.1
-python-editor==1.0.4
-six==1.15.0
-SQLAlchemy==1.3.23
-Werkzeug==1.0.1
-WTForms==2.3.3
+click==7.1.2<br>
+dnspython==2.1.0<br>
+email-validator==1.1.2<br>
+Flask==1.1.2<br>
+Flask-Login==0.5.0<br>
+Flask-Migrate==2.7.0<br>
+Flask-Script==2.0.6<br>
+Flask-SQLAlchemy==2.4.4<br>
+Flask-WTF==0.14.3<br>
+idna==3.1<br>
+itsdangerous==1.1.0<br>
+Jinja2==2.11.3<br>
+Mako==1.1.4<br>
+MarkupSafe==1.1.1<br>
+python-dateutil==2.8.1<br>
+python-editor==1.0.4<br>
+six==1.15.0<br>
+SQLAlchemy==1.3.23<br>
+Werkzeug==1.0.1<br>
+WTForms==2.3.3<br>
 
 # Commands:
 
-Run server:
-python run.py runserver
+Run server:<br>
+python run.py runserver<br>
 
-Create a database:
-python run.py db init
+Create a database:<br>
+python run.py db init<br>
 
-Migrate current database:
-python run.py db migrate
+Migrate current database:<br>
+python run.py db migrate<br>
 
-Update current databases:
-python run.py db upgrade
+Update current databases:<br>
+python run.py db upgrade<br>
