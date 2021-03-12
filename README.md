@@ -85,5 +85,5 @@ virtualenv venv
 
 ### Passo 3. Instalação dos pacotes obrigatórios
 
-* Dentro do ambiente virtual, comece a instalar os <a href="# Requirements:">pacotes obrigatórios</a>
+* Dentro do ambiente virtual, comece a instalar os <a href="#requirements">pacotes obrigatórios</a>
 
