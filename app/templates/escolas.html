@@ -1,50 +1,94 @@
 {% extends 'logged-base.html' %}
 {% block contect %}
-<div id="page-content-wrapper">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-4">
-                <h1>Inserir Aluno</h1>
-                    <form action="" method="POST">
-                        {{ form.csrf_token }}
-                        <div class="input-group mb-3">
-                            {{ form.cep(class="form-control stringInput", placeholder="Digite o CEP", id="cep") }}
-                            <div class="input-group-append">
-                              <button id="search-cep" class="btn btn-outline-secondary" type="button">Buscar</button>
-                            </div>
-                          </div>
-                        <div class="form-group">
-                        <label>Nome da escola:</label>
-                        {{ form.nome(class="form-control stringInput", placeholder="Nome da escola", id="nome") }}
-                        </div>
-                        <div class="form-group">
-                            <label>Rua:</label>
-                            {{ form.rua(class="form-control stringInput", id="rua") }}
-                        </div>
-                        <div class="form-group">
-                            <label>Número:</label>
-                            {{ form.numero(class="form-control stringInput", id="numero") }}
-                        </div>
-                        <div class="form-group">
-                            <label>Complemento:</label>
-                            {{ form.complemento(class="form-control stringInput", id="complemento") }}
-                        </div>
-                        <div class="form-group">
-                            <label>Bairro:</label>
-                            {{ form.bairro(class="form-control stringInput", id="bairro") }}
-                        </div>
-                        <div class="form-group">
-                            <label>Cidade:</label>
-                            {{ form.cidade(class="form-control stringInput", id="cidade") }}
-                        </div>
-                        <div class="form-group">
-                            <label>Estado:</label>
-                            {{ form.estado(class="form-control stringInput", id="estado") }}
-                        </div>
-                        <button type="submit" class="btn btn-success tn-default" id="submit" >Registrar</button>
-                    </form>
+<div class="row">
+    <div class="col-lg-4">
+        <h2 class="subTitulo">Inserir Escola</h2>
+        <form action="" method="POST">
+            {{ form.csrf_token }}
+            <div class="input-group mb-3">
+                {{ form.cep(class="form-control stringInput", placeholder="Digite o CEP", id="cep") }}
+                <div class="input-group-append">
+                    <button id="search-cep" class="btn btn-outline-secondary" type="button">Buscar</button>
                 </div>
+            </div>
+            <div class="form-group">
+                <label>Nome da escola:</label>
+                {{ form.nome(class="form-control stringInput", placeholder="Nome da escola", id="nome") }}
+            </div>
+            <div class="form-group">
+                <label>Rua:</label>
+                {{ form.rua(class="form-control stringInput", id="rua") }}
+            </div>
+            <div class="form-group">
+                <label>Número:</label>
+                {{ form.numero(class="form-control stringInput", id="numero") }}
+            </div>
+            <div class="form-group">
+                <label>Complemento:</label>
+                {{ form.complemento(class="form-control stringInput", id="complemento") }}
+            </div>
+            <div class="form-group">
+                <label>Bairro:</label>
+                {{ form.bairro(class="form-control stringInput", id="bairro") }}
+            </div>
+            <div class="form-group">
+                <label>Cidade:</label>
+                {{ form.cidade(class="form-control stringInput", id="cidade") }}
+            </div>
+            <div class="form-group">
+                <label>Estado:</label>
+                {{ form.estado(class="form-control stringInput", id="estado") }}
+            </div>
+            <button type="submit" class="btn btn-success tn-default btnMargins" id="submit" >Registrar</button>
+            <button type="button" class="btn btn-secondary tn-default btnMargins" id="bntClear">Limpar Campos</button>
+        </form>
+    </div>
+    <div class="col-lg-4">
+        <h2 class="subTitulo coluna2">Escolas Cadastradas</h2>
+        <div class="table-responsive">
+            <table class="table" id="rowTable">
+                <thead>
+                    <tr>
+                        <th scope="col">CEP</th>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Número</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for escola in escolas %}
+                    <tr>
+                        <td>{{ escola.cep }}</td>
+                        <td>{{ escola.nome }}</td>
+                        <td>{{ escola.numero }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
         </div>
     </div>
+    <div class="col-lg-4">
+        <h2 class="subTitulo coluna2">Remover Escola</h2>
+        <form action="" method="POST">
+            {{ form_rmv.csrf_token }}
+            <label>Nome da escola para remover:</label>
+            {{ form_rmv.nome }}
+            <button type="submit" class="btn btn-danger tn-default btnMargins" id="submit" >Deletar</button>
+        </form>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <div class="alert alert-danger alertForm" role="alert">
+          <ul class=flashes>
+            {% for message in messages %}
+              <li>{{ message }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+        {% endif %}
+      {% endwith %}
+      
 </div>
+</div>
+
+</div>
+
 {% endblock %}

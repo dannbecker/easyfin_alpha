@@ -77,8 +77,8 @@ class Escola(db.Model):
     __tablename__ = "escolas"
 
     id = db.Column(db.Integer, primary_key=True)
-    nome = db.Column(db.String)
     cep = db.Column(db.String)
+    nome = db.Column(db.String)
     rua = db.Column(db.String)
     numero = db.Column(db.String)
     complemento = db.Column(db.String)
@@ -101,9 +101,9 @@ class Escola(db.Model):
     def get_id(self):
         return str(self.id)
 
-    def __init__(self, nome, cep, rua, numero, complemento, bairro, cidade, estado):
-        self.nome = nome
+    def __init__(self, cep, nome, rua, numero, complemento, bairro, cidade, estado):
         self.cep = cep
+        self.nome = nome
         self.rua = rua
         self.numero = numero
         self.complemento = complemento

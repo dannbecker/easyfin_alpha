@@ -29,10 +29,6 @@
           </div>
       </div>
     </nav>
-        <main class="main">
-			{% block contect %}
-            {% endblock %}
-		</main>
         <aside class="sidebar">
 			<nav>
 				<ul class="sidebar__nav">
@@ -75,6 +71,26 @@
 				</ul>
 			</nav>
 		</aside>
+			<main class="main">
+				<div id="page-content-wrapper">
+					<div class="container-fluid">
+
+						<!-- Bloco de conteúdo do main -->
+						{% block contect %}
+
+
+
+
+
+
+
+
+
+						{% endblock %}
+
+					</div>
+				</div>
+		</main>
     <footer>
 
     </footer>
@@ -92,4 +108,6 @@
   
   
     </body>
+	{% else %}
+
     {% endif %}

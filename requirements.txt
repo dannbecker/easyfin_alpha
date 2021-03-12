@@ -1,5 +1,8 @@
-Python version: 3.9.2
+Python version used: 3.9.2
+Python version needed: at least Python 3
+
 Need to install: pip and virtualenv
+
 Packages:
 alembic==1.5.6
 click==7.1.2

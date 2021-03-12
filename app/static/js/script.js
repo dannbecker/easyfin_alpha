@@ -43,3 +43,17 @@ bairro.value = data.bairro;
 cidade.value = data.localidade;
 estado.value = data.uf;
 }
+
+const btnClear = document.querySelector('#btnClear');
+function limpar() {
+
+	document.querySelector('#rua').value = '';
+	document.querySelector('#complemento').value = '';
+	document.querySelector('#bairro').value = '';
+	document.querySelector('#cidade').value = '';
+	document.querySelector('#estado').value = '';
+    
+    document.querySelector('#cep').value = '';
+    cep.focus();
+
+}

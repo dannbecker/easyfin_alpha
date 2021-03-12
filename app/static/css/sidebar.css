@@ -2,7 +2,12 @@
 	background-color: #333;
 	position: fixed;
 	transition: width 0.2s ease;
-    margin-top: -792px;
+	z-index:100;
+}
+
+#page-content-wrapper{
+	margin: 15px auto; 
+	position: relative; 
 }
 
 .sidebar nav {
@@ -47,10 +52,6 @@
 
 @media (max-width: 572px) {
 
-    .main {
-        margin-bottom: 80px;
-    }
-
 	.sidebar {
 		bottom: 0;
 		width: 100%;
@@ -72,11 +73,8 @@
 
 @media (min-width: 572px) {
 
-    .main {
-        margin-left: 100px;
-    }
-
 	.sidebar {
+		margin-top: -62px;
 		height: 100vh;
 		left: 0;
 		width: var(--sidebar-width);
@@ -94,6 +92,11 @@
 		margin-top: auto;
         padding-bottom: 60px;
 	}
+
+	.sidebar .sidebar__nav li:first-child {
+		margin-top: 60px;
+	}
+
 
 	.sidebar .sidebar__nav .sidebar__nav__link {
 		padding: 1em;

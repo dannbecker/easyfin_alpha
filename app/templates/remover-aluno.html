@@ -2,22 +2,22 @@
 {% block contect %}
 <div class="row">
     <div class="col-lg-4">
-        <h2 class="subTitulo coluna2">Escolas Cadastradas</h2>
+        <h2 class="subTitulo coluna2">Alunos Cadastrados</h2>
         <div class="table-responsive">
             <table class="table" id="rowTable">
                 <thead>
                     <tr>
-                        <th scope="col">CEP</th>
                         <th scope="col">Nome</th>
-                        <th scope="col">Número</th>
+                        <th scope="col">Sobrenome</th>
+                        <th scope="col">E-mail</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {% for escola in escolas %}
+                    {% for aluno in alunos %}
                     <tr>
-                        <td>{{ escola.cep }}</td>
-                        <td>{{ escola.nome }}</td>
-                        <td>{{ escola.numero }}</td>
+                        <td>{{ aluno.nome }}</td>
+                        <td>{{ aluno.sobrenome }}</td>
+                        <td>{{ aluno.email }}</td>
                     </tr>
                     {% endfor %}
                 </tbody>
@@ -25,28 +25,25 @@
         </div>
     </div>
     <div class="col-lg-4">
-        <h2 class="subTitulo coluna2">Remover Escola</h2>
+        <h2 class="subTitulo coluna2">Remover Aluno</h2>
         <form action="" method="POST">
             {{ form_rmv.csrf_token }}
-            <label>Nome da escola para remover:</label>
-            {{ form_rmv.nome }}
+            <label>E-mail cadastrado para remover:</label>
+            {{ form_rmv.email }}
             <button type="submit" class="btn btn-danger tn-default btnMargins" id="submit" >Deletar</button>
         </form>
         {% with messages = get_flashed_messages() %}
         {% if messages %}
         <div class="alert alert-danger alertForm" role="alert">
-          <ul class=flashes>
+        <ul class=flashes>
             {% for message in messages %}
-              <li>{{ message }}</li>
+            <li>{{ message }}</li>
             {% endfor %}
-          </ul>
+        </ul>
         </div>
         {% endif %}
-      {% endwith %}
-      
-</div>
-<script>
+    {% endwith %}
     
-
-</script>
+    </div>
+</div>
 {% endblock %}
