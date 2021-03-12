@@ -52,7 +52,7 @@ python run.py db upgrade<br>
 
 # Step-by-step guide:
 
-##[PT-BR]
+**[PT-BR]**
 
 ### Passo 1.
 
@@ -63,3 +63,9 @@ python run.py db upgrade<br>
 ### Passo 2.
 
 * Com o Python instalado, abra o prompt de comando do seu sistema operacional e<a href="https://pip.pypa.io/en/stable/installing/"> siga estes passos (para instalar o pip).</a>
+
+* Após instalado o pip, é possível instalar o virtualenv com o seguinte comando:
+
+```
+pip install virtualenv
+```
