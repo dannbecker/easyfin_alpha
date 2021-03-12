@@ -85,5 +85,19 @@ virtualenv venv
 
 ### Passo 3. Instalação dos pacotes obrigatórios
 
-* Dentro do ambiente virtual, comece a instalar os <a href="#requirements">pacotes obrigatórios</a>
+* Dentro do ambiente virtual, comece a instalar os <a href="#requirements">pacotes obrigatórios</a> conforme o exemplo:
+```
+pip install Flask
+```
+
+Obs.: Alguns pacotes da lista são inclusos na instalação de pacotes principais, como o Flask, que instala diversos outros pacotes com ele.
+
+### Passo 4. Executando a aplicação
+
+* Finalmente, na pasta raiz onde encontra-se o arquivo run.py, execute o seguinte comando:
+```
+python run.py runserver
+```
+* Pronto! A aplicação está sendo executada.
+* Os <a href="#commands">demais comandos</a> são para o banco de dados.
 
