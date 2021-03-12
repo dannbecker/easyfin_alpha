@@ -1,14 +1,14 @@
 # EasyFin (Ver. Alpha)
-[PT-BR]
+**[PT-BR]**
 O projeto consiste na elaboração de um website para cadastro de alunos e professores para visualização de notícia e cadastramento de questões.
-O projeto está em desenvolvimento, desenvolvido em Python utilizando o Flask no backend, bootstrap, jquery e javascript no frontend.
+O projeto está em desenvolvimento, desenvolvido em Python utilizando o **Flask** no backend, bootstrap, jquery e javascript no frontend.
 O CRUD já está funcional. A utilização de Fetch API também está funcional.
 Realizar uma sessão é possível.
 Existe a verificação de excessões e erros.
 
 # Requirements:
 
-Python version needed: at least Python 3
+Python version needed: at least **Python 3**
 Python version used: 3.9.2
 
 pip and virtualenv
@@ -49,3 +49,17 @@ python run.py db migrate<br>
 
 Update current databases:<br>
 python run.py db upgrade<br>
+
+# Step-by-step guide:
+
+##[PT-BR]
+
+### Passo 1.
+
+* Vá para <a href="https://www.python.org/downloads/">website do Python e instale a versão 3 ou superior.</a>
+* Durante a instalação, lembre-se de adicionar o Python ao PATH.
+
+
+### Passo 2.
+
+* Com o Python instalado, abra o prompt de comando do seu sistema operacional e<a href="https://pip.pypa.io/en/stable/installing/"> siga estes passos (para instalar o pip).</a>
