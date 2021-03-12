@@ -13,7 +13,21 @@ Python version used: 3.9.2
 
 pip and virtualenv
 
-Packages:
+### Packages to execute installation:
+
+```
+pip install Flask
+pip install Flask-Login
+pip install Flask-Migrate
+pip install Flask-Script
+pip install Flask-SQLAlchemy
+pip install Flask-WTF
+pip install SQLAlchemy
+pip install WTForms
+pip install WTForms[email]
+```
+### Packages installed after above:
+```
 alembic==1.5.6<br>
 click==7.1.2<br>
 dnspython==2.1.0<br>
@@ -35,21 +49,26 @@ six==1.15.0<br>
 SQLAlchemy==1.3.23<br>
 Werkzeug==1.0.1<br>
 WTForms==2.3.3<br>
+```
 
 # Commands:
 
 Run server:<br>
-python run.py runserver<br>
-
+```
+python run.py runserver
+```
 Create a database:<br>
-python run.py db init<br>
-
+```
+python run.py db init
+```
 Migrate current database:<br>
-python run.py db migrate<br>
-
+```
+python run.py db migrate
+```
 Update current databases:<br>
-python run.py db upgrade<br>
-
+```
+python run.py db upgrade
+```
 # Step-by-step guide:
 
 **[PT-BR]**
@@ -85,12 +104,10 @@ virtualenv venv
 
 ### Passo 3. Instalação dos pacotes obrigatórios
 
-* Dentro do ambiente virtual, comece a instalar os <a href="#requirements">pacotes obrigatórios</a> conforme o exemplo:
+* Dentro do ambiente virtual, comece a instalar os <a href="#packages-to-execute-installation">pacotes obrigatórios</a> conforme o exemplo:
 ```
 pip install Flask
 ```
-
-Obs.: Alguns pacotes da lista são inclusos na instalação de pacotes principais, como o Flask, que instala diversos outros pacotes com ele.
 
 ### Passo 4. Executando a aplicação
 
