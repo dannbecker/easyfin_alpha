@@ -14,7 +14,7 @@ Python version used: 3.9.2
 pip and virtualenv
 
 Packages:
-alembic==1.5.6
+alembic==1.5.6<br>
 click==7.1.2
 dnspython==2.1.0
 email-validator==1.1.2
