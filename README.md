@@ -66,6 +66,6 @@ python run.py db upgrade<br>
 
 * Após instalado o pip, é possível instalar o virtualenv com o seguinte comando:
 
-```
+```python
 pip install virtualenv
 ```
