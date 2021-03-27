@@ -13,7 +13,7 @@ Python version used: 3.9.2
 
 pip and virtualenv
 
-### Packages to execute installation:
+### Packages to install:
 
 ```
 pip install Flask
