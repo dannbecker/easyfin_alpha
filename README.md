@@ -104,7 +104,7 @@ virtualenv venv
 
 ### Passo 3. Instalação dos pacotes obrigatórios
 
-* Dentro do ambiente virtual, comece a instalar os <a href="#packages-to-execute-installation">pacotes obrigatórios</a> conforme o exemplo:
+* Dentro do ambiente virtual, comece a instalar os <a href="#packages-to-install">pacotes obrigatórios</a> conforme o exemplo:
 ```
 pip install Flask
 ```
