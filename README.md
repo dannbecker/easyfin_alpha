@@ -13,7 +13,7 @@ Python version used: 3.9.2
 
 pip and virtualenv
 
-### Packages to execute installation:
+### Packages to install:
 
 ```
 pip install Flask
@@ -104,7 +104,7 @@ virtualenv venv
 
 ### Passo 3. Instalação dos pacotes obrigatórios
 
-* Dentro do ambiente virtual, comece a instalar os <a href="#packages-to-execute-installation">pacotes obrigatórios</a> conforme o exemplo:
+* Dentro do ambiente virtual, comece a instalar os <a href="#packages-to-install">pacotes obrigatórios</a> conforme o exemplo:
 ```
 pip install Flask
 ```
