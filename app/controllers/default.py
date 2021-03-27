@@ -43,7 +43,7 @@ def logout():
 
 @app.route("/temp", methods=["POST", "GET", "DELETE"])
 def temp():
-    return render_template('temp.html', datas=datas)
+    return render_template('temp.html' )
 
 # TESTE # # TESTE # # TESTE # # TESTE # # TESTE # # TESTE # # TESTE # # TESTE # # TESTE #
 @app.route("/teste/<info>")
@@ -186,3 +186,14 @@ def notfound():
 @app.route('/logged-base', methods=['GET', 'POST'])
 def test():
     return render_template('logged-base.html')
+
+
+@app.route('/apagar/<int:id>', methods=['POST','GET'])
+def apagar(id):
+    professor = Professor.query.filter_by(id=id).first()
+    db.session.delete(professor)
+    db.session.commit()
+
+
+    return redirect(url_for("professores"))
+
