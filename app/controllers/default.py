@@ -1,5 +1,5 @@
 from app import app, db
-from flask import render_template, flash, redirect, request, url_for, jsonify
+from flask import render_template, flash, redirect, request, url_for, jsonify, g
 from flask_login import login_user, logout_user
 from app.models.forms import loginForm, validatePassword, addEscola, removeEscola, addAluno, removeAluno, addProfessor, removeProfessor
 from app.models.tables import Aluno, Professor, Escola
@@ -27,6 +27,7 @@ def login():
         professor = Professor.query.filter_by(email=form.email.data).first()
         if professor and professor.password == form.password.data:
             login_user(professor)
+            
             return redirect(url_for("dashboard"))
         else:
             flash("E-mail e/ou senha inválidos.")
@@ -114,24 +115,6 @@ def professores():
 
     return render_template('professores.html', professores=professores, form=form)
 
-@app.route("/remover/professores", methods=["POST", "GET", "DELETE"])
-def rmvProfessores():
-
-    professores = Professor.query.all()
-    form_rmv = removeProfessor()
-    if form_rmv.validate_on_submit():
-        professor = Professor.query.filter_by(email=form_rmv.email.data).first()
-        if professor:
-            db.session.delete(professor)   
-            db.session.commit()
-            print("Professor deletado!")
-            return redirect(url_for("rmvProfessores"))
-        else:
-            flash("E-mail não encontrado no banco de dados!")
-            print(professor)
-
-    return render_template('remover-professor.html', professores=professores, form_rmv=form_rmv)
-
 
 @app.route("/noticias", methods=["POST", "GET"])
 def noticias():
@@ -188,8 +171,8 @@ def test():
     return render_template('logged-base.html')
 
 
-@app.route('/apagar/<int:id>', methods=['POST','GET'])
-def apagar(id):
+@app.route('/apagar/professor/<int:id>', methods=['POST','GET'])
+def apagar_professor(id):
     professor = Professor.query.filter_by(id=id).first()
     db.session.delete(professor)
     db.session.commit()
@@ -197,3 +180,10 @@ def apagar(id):
 
     return redirect(url_for("professores"))
 
+@app.route('/apagar/aluno/<int:id>')
+def apagar_aluno(id):
+    aluno = Aluno.query.filter_by(id=id).first()
+    db.session.delete(aluno)
+    db.session.commit()
+
+    return redirect(url_for("alunos"))
