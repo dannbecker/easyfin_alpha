@@ -14,19 +14,19 @@
 <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/sidebar.css') }}">
 <link rel="stylesheet" href="https://cdn.materialdesignicons.com/4.9.95/css/materialdesignicons.min.css"/>
 
-<body class="corpo">
+<body class="corpo" style="background-color:rgb(248, 248, 248)">
     <nav class="navbar navPrincipal">
         <div class="container-fluid">
           <h2 class="tituloPrincipal">EasyFin</h2>
           <div class="btn-group">
               <button type="button" class="btn btn-default dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-toggle="dropdown">
                   <i class="mdi mdi-account" style="font-size: 20px;"></i>
-                  <span class="glyphicon glyphicon-user userFont">{{ current_user.nome }}</span> 
+                  <span class="glyphicon glyphicon-user userFont userName">{{ current_user.nome }}</span> 
               </button>
-              <ul class="dropdown-menu userFont">
-                  <li><a class="dropdown-item" href="{{ url_for('perfil', user=current_user.nome) }}">Meu perfil</a></li>
-                  <li><hr class="dropdown-divider"></li>
-                  <li><a class="dropdown-item" href="{{ url_for('logout') }}">Sair</a></li>
+              <ul class="dropdown-menu dropdown-menu-right userFont">
+                  <li class="nav-item dropdown"><a class="dropdown-item" href="{{ url_for('perfil', user=current_user.nome) }}">Meu perfil</a></li>
+                  <li class="nav-item dropdown"><hr class="dropdown-divider"></li>
+                  <li class="nav-item dropdown"><a class="dropdown-item" href="{{ url_for('logout') }}">Sair</a></li>
               </ul>     
           </div>
       </div>

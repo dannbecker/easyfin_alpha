@@ -41,7 +41,7 @@
             {% endif %}
 
     </div>
-    <div class="col-lg-4">
+    <div class="col-lg-6">
         <h2 class="subTitulo coluna2">Alunos Cadastrados</h2>
         <div class="table-responsive">
             <table class="table" id="rowTable">
@@ -50,6 +50,7 @@
                         <th scope="col">Nome</th>
                         <th scope="col">Sobrenome</th>
                         <th scope="col">E-mail</th>
+                        <th scope="col">Remover</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -58,7 +59,7 @@
                         <td>{{ aluno.nome }}</td>
                         <td>{{ aluno.sobrenome }}</td>
                         <td>{{ aluno.email }}</td>
-                        <td><a href="apagar/aluno/{{aluno.id}}">apagar</a></td>
+                        <td><a href="apagar/aluno/{{aluno.id}}"><i class="mdi mdi-delete iconDelete"></i></a></td>
                     </tr>
                     {% endfor %}
                 </tbody>

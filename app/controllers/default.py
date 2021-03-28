@@ -187,3 +187,11 @@ def apagar_aluno(id):
     db.session.commit()
 
     return redirect(url_for("alunos"))
+
+@app.route('/apagar/escola/<int:id>')
+def apagar_escola(id):
+    escola = Escola.query.filter_by(id=id).first()
+    db.session.delete(escola)
+    db.session.commit()
+
+    return redirect(url_for("escolas"))
