@@ -193,6 +193,7 @@ def apagar_aluno(id):
 
     return redirect(url_for("alunos"))
 
+<<<<<<< HEAD
 
 @app.route('/editar/professor/<int:id>')
 def editar_professor(id):
@@ -217,3 +218,12 @@ def atualiza_professores(id):
     db.session.commit()
 
     return redirect('/professores')
+=======
+@app.route('/apagar/escola/<int:id>')
+def apagar_escola(id):
+    escola = Escola.query.filter_by(id=id).first()
+    db.session.delete(escola)
+    db.session.commit()
+
+    return redirect(url_for("escolas"))
+>>>>>>> b0bd44686e0be620bbe876e206f713cff6ee1e75
