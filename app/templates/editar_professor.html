@@ -1,0 +1,47 @@
+{% extends 'logged-base.html' %}
+{% block contect %}
+<div class="row">
+    <div class="col-lg-4">
+        <h2 class="subTitulo">Inserir Professor</h2>
+        <form action="/atualiza/professor/{{professor.id}}" method="POST">
+            <input type="hidden" name="id" value="{{professor.id}}">
+            <div class="form-group">
+                <label>Nome:</label>
+                <input type="text" name="nome" value="{{professor.nome}}" >
+            </div>
+            <div class="form-group">
+                <label>Sobrenome:</label>
+                <input type="text" name="sobrenome" value="{{professor.sobrenome}}" >
+            </div>
+            <div class="form-group">
+                <label>E-mail:</label>
+                <input type="email" name="email" value="{{professor.email}}" >
+
+            </div>
+            <div class="form-group">
+                <label>Senha:</label>
+                <input type="password" name="senha" value="{{professor.senha}}" >
+
+            </div>
+            <div class="form-group">
+                <label>Repetir senha:</label>
+                <input type="password" name="confirm" value="" >
+
+            </div>
+            <div class="form-group">
+                <label>Disciplina:</label>
+                <input type="text" name="disciplina" value="{{professor.disciplina}}" >
+
+            </div>
+            <button type="submit" class="btn btn-success tn-default btnMargins" id="submit" >editar</button>
+        </form>
+
+
+            </div>
+
+
+    </div>
+
+</div>
+
+{% endblock %}

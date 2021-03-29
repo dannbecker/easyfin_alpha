@@ -48,3 +48,4 @@ class removeEscola(FlaskForm):
 
 class validatePassword(FlaskForm):
     password = PasswordField("password", validators=[DataRequired()])
+
