@@ -1,10 +1,11 @@
+import os
 from app import app, db
 from flask import render_template, flash, redirect, request, url_for, jsonify, g
 from flask_login import login_user, logout_user
 from app.models.forms import loginForm, validatePassword, addEscola, removeEscola, addAluno, removeAluno, addProfessor, \
     removeProfessor
 from app.models.tables import Aluno, Professor, Escola
-
+from werkzeug.utils import secure_filename
 
 @app.route("/home")
 @app.route("/")
@@ -65,10 +66,39 @@ def teste(info):
 def dashboard():
     return render_template('dashboard.html')
 
+def allowed_file(filename):
+    return '.' in filename and \
+           filename.rsplit('.', 1)[1].lower() in app.config['PERFIL_ALLOWED_EXTENSIONS']
+
 
 @app.route("/perfil/<user>")
 def perfil(user):
-    return render_template('perfil.html')
+    usuario = Aluno.query.filter_by(nome=user).first()
+
+    return render_template('perfil.html', usuario=usuario)
+
+@app.route("/perfil/<user>/upload-de-imagem", methods=['GET', 'POST'])
+def perfil_upload_img(user):
+    
+    if request.method == 'POST':
+        # check if the post request has the file part
+        if 'file' not in request.files:
+            flash('No file part')
+            return redirect(request.url)
+        file = request.files['file']
+        # if user does not select file, browser also
+        # submit an empty part without filename
+        if file.filename == '':
+            flash('No selected file')
+            return redirect(request.url)
+        if file and allowed_file(file.filename):
+            print(file)
+            filename = secure_filename(file.filename)
+            file.save(os.path.join(app.config['UPLOAD_PERFIL_IMAGE'], filename))
+            return redirect(url_for('perfil',
+                                    user=user))
+
+    return render_template('perfil-upload-img.html')
 
 
 @app.route("/alunos", methods=["POST", "GET"])
@@ -193,37 +223,31 @@ def apagar_aluno(id):
 
     return redirect(url_for("alunos"))
 
-<<<<<<< HEAD
 
-@app.route('/editar/professor/<int:id>')
+@app.route('/editar/professor/<int:id>', methods=['GET', 'POST'])
 def editar_professor(id):
-    professor = Professor.query.filter_by(id=id).first()
+    professor = db.session.query(Professor).get(id)
+    form = addProfessor(obj=professor)
+    
+    if form.validate_on_submit():
+        form.populate_obj(professor)
+        db.session.add(professor)
+        db.session.commit()
+        return redirect('/professores')
+        
 
-    return render_template('editar_professor.html', professor=professor)
+    return render_template('/editar-professor.html', form=form, professor=professor)
 
+@app.route('/editar/aluno/<int:id>', methods=['GET', 'POST'])
+def editar_aluno(id):
+    aluno = db.session.query(Aluno).get(id)
+    form = addAluno(obj=aluno)
+    
+    if form.validate_on_submit():
+        form.populate_obj(aluno)
+        db.session.add(aluno)
+        db.session.commit()
+        return redirect('/alunos')
+        
 
-@app.route('/atualiza/professor/<int:id>', methods=['GET', 'POST'])
-def atualiza_professores(id):
-    form = addProfessor()
-
-    nome = form.nome.data
-    sobrenome = form.sobrenome.data
-    email = form.email.data
-    senha = form.password.data
-    confirm = form.confirm.data
-
-    professor = Professor.query.filter_by(id=id).first()
-
-    professor.nome = nome;
-    db.session.commit()
-
-    return redirect('/professores')
-=======
-@app.route('/apagar/escola/<int:id>')
-def apagar_escola(id):
-    escola = Escola.query.filter_by(id=id).first()
-    db.session.delete(escola)
-    db.session.commit()
-
-    return redirect(url_for("escolas"))
->>>>>>> b0bd44686e0be620bbe876e206f713cff6ee1e75
+    return render_template('/editar-aluno.html', form=form, aluno=aluno)

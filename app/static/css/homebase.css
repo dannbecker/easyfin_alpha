@@ -67,6 +67,16 @@ thead {
   color:rgb(199, 0, 0)
 }
 
+.iconEdit {
+  font-size: 25px;
+  color:rgb(0, 132, 255)
+}
+
+.iconEdit:hover {
+  font-size: 25px;
+  color:rgb(0, 98, 190)
+}
+
 .imgProfile {
   width: 140px;
   height: 140px;
