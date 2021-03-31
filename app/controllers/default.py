@@ -34,7 +34,7 @@ def login():
 
             return redirect(url_for("dashboard"))
         else:
-            flash("E-mail e/ou senha inválidos.")
+            flash("E-mail e/ou senha inválidosWWDAWDA.")
     else:
         print(form.errors)
     return render_template('log-in.html', form=form)
