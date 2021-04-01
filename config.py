@@ -10,4 +10,4 @@ SECRET_KEY = 'temp_password'
 # Importar arquivos
 
 UPLOAD_PERFIL_IMAGE = "app\static\img\perfil"
-PERFIL_ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
+PERFIL_ALLOWED_EXTENSIONS = {'jpg'}

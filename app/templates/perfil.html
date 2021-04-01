@@ -3,7 +3,7 @@
 <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/perfil.css') }}">
 <div class="row">
     <div class="col-12">
-        <img src="{{ url_for('static', filename='img/default-avatar.png') }}" class="img-fluid imgProfile" alt="Responsive image">
+        <img src="{{ url_for('static', filename=foto_perfil) }}" class="img-fluid imgProfile" alt="Responsive image">
         <a href="{{ url_for('perfil_upload_img', user=current_user.nome) }}"><button type="button" class="btn btn-light" style="font-size: 14px;">Mudar Imagem</button></a>
         <p class="nameProfile">{{ current_user.nome }} {{ current_user.sobrenome }}</p>
     </div>

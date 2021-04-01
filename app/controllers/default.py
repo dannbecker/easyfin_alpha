@@ -1,7 +1,7 @@
 import os
 from app import app, db
 from flask import render_template, flash, redirect, request, url_for, jsonify, g
-from flask_login import login_user, logout_user
+from flask_login import login_user, logout_user, current_user
 from app.models.forms import loginForm, validatePassword, addEscola, removeEscola, addAluno, removeAluno, addProfessor, \
     removeProfessor
 from app.models.tables import Aluno, Professor, Escola
@@ -34,7 +34,7 @@ def login():
 
             return redirect(url_for("dashboard"))
         else:
-            flash("E-mail e/ou senha inválidosWWDAWDA.")
+            flash("E-mail e/ou senha inválidos.")
     else:
         print(form.errors)
     return render_template('log-in.html', form=form)
@@ -70,37 +70,71 @@ def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in app.config['PERFIL_ALLOWED_EXTENSIONS']
 
+def get_filepath():
+    return os.path.abspath("app/static/img/perfil") + ("/")
+
+def get_file_extension(file):
+    filename_noext, file_extension = os.path.splitext(file.filename)
+    return file_extension
+
+def detect_image_path(image):
+    filepath = get_filepath()
+    image_path = filepath + image
+    return os.path.isfile(image_path)
+
+def detect_profile_picture():
+
+    image = "id_" + (str(current_user.id) + ".jpg")
+    src_path = "img/perfil/"
+    if detect_image_path(image):
+        return src_path + image
+    else:
+        return src_path + "default-avatar.jpg"
 
 @app.route("/perfil/<user>")
 def perfil(user):
     usuario = Aluno.query.filter_by(nome=user).first()
+    foto_perfil = detect_profile_picture()
 
-    return render_template('perfil.html', usuario=usuario)
+    return render_template('perfil.html', usuario=usuario, foto_perfil=foto_perfil)
 
 @app.route("/perfil/<user>/upload-de-imagem", methods=['GET', 'POST'])
 def perfil_upload_img(user):
-    
+    foto_perfil = detect_profile_picture()
+
     if request.method == 'POST':
-        # check if the post request has the file part
-        if 'file' not in request.files:
-            flash('No file part')
-            return redirect(request.url)
+
         file = request.files['file']
-        # if user does not select file, browser also
-        # submit an empty part without filename
-        if file.filename == '':
-            flash('No selected file')
+
+        if get_file_extension(file) != ".jpg":
+            flash('A imagem precisa estar no formato JPG.')
             return redirect(request.url)
+      
+        
+        if file.filename == '':
+            flash('Não foi selecionado uma imagem.')
+            return redirect(request.url)
+
         if file and allowed_file(file.filename):
-            print(file)
+            filepath = get_filepath()
+            image = "id_" + (str(current_user.id) + ".jpg")
+
+            new_filename = filepath + image
+            old_filename = filepath + file.filename
+
+            if detect_image_path(image):
+                os.remove(new_filename)
+
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.config['UPLOAD_PERFIL_IMAGE'], filename))
+            os.rename(old_filename, new_filename)
+
             return redirect(url_for('perfil',
                                     user=user))
 
-    return render_template('perfil-upload-img.html')
+    return render_template('perfil-upload-img.html', foto_perfil=foto_perfil)
 
-
+    
 @app.route("/alunos", methods=["POST", "GET"])
 def alunos():
     form = addAluno()
