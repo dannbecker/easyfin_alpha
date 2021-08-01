@@ -51,6 +51,7 @@
                         <th scope="col">CEP</th>
                         <th scope="col">Nome</th>
                         <th scope="col">Número</th>
+                        <th scope="col">Remover</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -59,33 +60,13 @@
                         <td>{{ escola.cep }}</td>
                         <td>{{ escola.nome }}</td>
                         <td>{{ escola.numero }}</td>
+                        <td><a href="apagar/escola/{{escola.id}}"><i class="mdi mdi-delete iconDelete"></i></a></td>
                     </tr>
                     {% endfor %}
                 </tbody>
             </table>
         </div>
     </div>
-    <div class="col-lg-4">
-        <h2 class="subTitulo coluna2">Remover Escola</h2>
-        <form action="" method="POST">
-            {{ form_rmv.csrf_token }}
-            <label>Nome da escola para remover:</label>
-            {{ form_rmv.nome }}
-            <button type="submit" class="btn btn-danger tn-default btnMargins" id="submit" >Deletar</button>
-        </form>
-        {% with messages = get_flashed_messages() %}
-        {% if messages %}
-        <div class="alert alert-danger alertForm" role="alert">
-          <ul class=flashes>
-            {% for message in messages %}
-              <li>{{ message }}</li>
-            {% endfor %}
-          </ul>
-        </div>
-        {% endif %}
-      {% endwith %}
-      
-</div>
 </div>
 
 </div>

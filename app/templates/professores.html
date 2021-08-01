@@ -45,7 +45,7 @@
             {% endif %}
 
     </div>
-    <div class="col-lg-6">
+    <div class="col-lg-7">
         <h2 class="subTitulo coluna2">Professores Cadastrados</h2>
         <div class="table-responsive">
             <table class="table" id="rowTable">
@@ -55,6 +55,7 @@
                         <th scope="col">Sobrenome</th>
                         <th scope="col">E-mail</th>
                         <th scope="col">Disciplina</th>
+                        <th scope="col">Ação</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -64,7 +65,9 @@
                         <td>{{ professor.sobrenome }}</td>
                         <td>{{ professor.email }}</td>
                         <td>{{ professor.disciplina }}</td>
-                        <td><a href="apagar/{{professor.id}} ">apagar</a></td>
+                        <td><a href="apagar/professor/{{professor.id}} "><i class="mdi mdi-delete iconDelete"></i></a>
+                            <a href="editar/professor/{{professor.id}} "><i class="mdi mdi-pencil iconEdit"></i></a>
+                        </td>
                     </tr>
                     {% endfor %}
                 </tbody>

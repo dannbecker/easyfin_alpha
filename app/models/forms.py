@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm  
-from wtforms import StringField, PasswordField, BooleanField, SelectField, FieldList
+from wtforms import StringField, PasswordField, BooleanField, SelectField, FieldList, FileField
 from wtforms.validators import DataRequired, Email, EqualTo
 
 
@@ -48,3 +48,4 @@ class removeEscola(FlaskForm):
 
 class validatePassword(FlaskForm):
     password = PasswordField("password", validators=[DataRequired()])
+

@@ -1,0 +1,10 @@
+.inputDesc {
+    background-color: rgb(73, 73, 73); 
+    color: white;
+}
+
+.imgProfile {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+}

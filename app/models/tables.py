@@ -71,7 +71,8 @@ class Professor(db.Model):
     
     def __repr__(self):
         return "<Professor %r>" % self.nome
-
+    def carrega_por_id(self, id):
+        db.__getattribute__(self,  )
 
 class Escola(db.Model):
     __tablename__ = "escolas"
