@@ -1,4 +1,6 @@
 import os
+import json
+import pandas as pd
 from app import app, db
 from flask import render_template, flash, redirect, request, url_for, jsonify, g
 from flask_login import login_user, logout_user, current_user
@@ -6,6 +8,32 @@ from app.models.forms import loginForm, validatePassword, addEscola, removeEscol
     removeProfessor
 from app.models.tables import Aluno, Professor, Escola
 from werkzeug.utils import secure_filename
+
+@app.route("/temp", methods=["POST", "GET", "DELETE"])
+def temp():
+    professores = Professor.query.all()
+
+    valores = {
+        'nomes_completos': [],
+        'emails': [],
+    }
+
+    for professor in professores:
+        nome = Professor.get_name(professor)
+        sobrenome = Professor.get_sobrenome(professor)
+        email = Professor.get_email(professor)
+
+        valores['nomes_completos'].append(nome + " " + sobrenome)
+        valores['emails'].append(email)
+        
+    print(valores)
+    jsonresult = jsonify({"professores": {
+        'nomes_completos': valores['nomes_completos'],
+        'emails': valores['emails']
+    }})
+    return jsonresult
+
+#render_template('temp.html', professor=professores)
 
 @app.route("/home")
 @app.route("/")
@@ -46,9 +74,6 @@ def logout():
     return redirect(url_for("index"))
 
 
-@app.route("/temp", methods=["POST", "GET", "DELETE"])
-def temp():
-    return render_template('temp.html')
 
 
 # TESTE # # TESTE # # TESTE # # TESTE # # TESTE # # TESTE # # TESTE # # TESTE # # TESTE #
@@ -285,3 +310,24 @@ def editar_aluno(id):
         
 
     return render_template('/editar-aluno.html', form=form, aluno=aluno)
+
+@app.route("/json/emails", methods=["POST", "GET"])
+def json_emails():
+
+    professores = Professor.query.all()
+
+    df = pd.DataFrame()
+
+    for professor in professores:
+        id_prof = Professor.get_id(professor)
+        nome = Professor.get_nome(professor)
+        sobrenome = Professor.get_sobrenome(professor)
+        email = Professor.get_email(professor)
+        disciplina = Professor.get_disciplina(professor)
+
+        df[id_prof] = [nome, sobrenome, email, disciplina]
+
+    df = df.rename(index={0: 'nome', 1: 'sobrenome', 2: 'email', 3: 'disciplina'})
+    dict_obj = df.to_dict()
+    json_result = jsonify(dict_obj)
+    return json_result

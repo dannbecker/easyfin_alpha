@@ -28,6 +28,18 @@ class Aluno(db.Model):
     def get_id(self):
         return str(self.id)
 
+    def get_email(self):
+        return str(self.email)   
+
+    def get_nome(self):
+        return str(self.nome)  
+
+    def get_sobrenome(self):
+        return str(self.sobrenome)        
+
+    def get_password(self):
+        return str(self.password)                          
+
     def __init__(self, email, nome, sobrenome, password):
         self.email = email
         self.nome = nome
@@ -61,6 +73,21 @@ class Professor(db.Model):
 
     def get_id(self):
         return str(self.id)
+
+    def get_email(self):
+        return str(self.email)
+
+    def get_nome(self):
+        return str(self.nome)
+
+    def get_sobrenome(self):
+        return str(self.sobrenome)   
+
+    def get_password(self):
+        return str(self.password)      
+
+    def get_disciplina(self):
+        return str(self.disciplina)                 
 
     def __init__(self, email, nome, sobrenome, password, disciplina):
         self.email = email
