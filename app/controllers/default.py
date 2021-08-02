@@ -316,7 +316,7 @@ def json_emails():
 
     professores = Professor.query.all()
 
-    df = pd.DataFrame()
+    lista_professores = []
 
     for professor in professores:
         id_prof = Professor.get_id(professor)
@@ -325,9 +325,13 @@ def json_emails():
         email = Professor.get_email(professor)
         disciplina = Professor.get_disciplina(professor)
 
-        df[id_prof] = [nome, sobrenome, email, disciplina]
-
-    df = df.rename(index={0: 'nome', 1: 'sobrenome', 2: 'email', 3: 'disciplina'})
-    dict_obj = df.to_dict()
-    json_result = jsonify(dict_obj)
-    return json_result
+        dict_professor = {
+            'id': id_prof,
+            'nome': nome,
+            'sobrenome': sobrenome,
+            'email': email,
+            'disciplina': disciplina
+        }
+        lista_professores.append(dict_professor)
+        
+    return jsonify(Professores=lista_professores)
