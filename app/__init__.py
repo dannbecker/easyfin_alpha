@@ -20,6 +20,8 @@ manager.add_command('db', MigrateCommand)
 login_manager = LoginManager() 
 login_manager.init_app(app)
 
+app.config['JSON_SORT_KEYS'] = False
+
 # Importação dos modelos de formulário e tabelas; Importação dos controllers padrões
 from app.models import tables, forms
 from app.controllers import default

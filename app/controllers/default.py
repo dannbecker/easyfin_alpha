@@ -1,6 +1,6 @@
 import os
 import json
-import pandas as pd
+from collections import OrderedDict
 from app import app, db
 from flask import render_template, flash, redirect, request, url_for, jsonify, g
 from flask_login import login_user, logout_user, current_user
@@ -44,8 +44,6 @@ def index():
 @app.route("/indexV2")
 def index2():
     return render_template('index_v2.html')
-
-
 @app.route("/contact")
 def contact():
     return render_template('contact.html')
@@ -315,8 +313,11 @@ def editar_aluno(id):
 def json_emails():
 
     professores = Professor.query.all()
+    alunos = Aluno.query.all()
 
+    lista_usuarios = []
     lista_professores = []
+    lista_alunos = []
 
     for professor in professores:
         id_prof = Professor.get_id(professor)
@@ -334,4 +335,21 @@ def json_emails():
         }
         lista_professores.append(dict_professor)
         
-    return jsonify(Professores=lista_professores)
+    for aluno in alunos:
+        id_aluno = Aluno.get_id(aluno)
+        nome = Aluno.get_nome(aluno)
+        sobrenome = Aluno.get_sobrenome(aluno)
+        email = Aluno.get_email(aluno)
+
+        dict_aluno = {
+            'id': id_aluno,
+            'nome': nome,
+            'sobrenome': sobrenome,
+            'email': email
+
+        }
+
+        lista_alunos.append(dict_aluno) 
+
+
+    return jsonify(Professores=lista_professores, Alunos=lista_alunos)
