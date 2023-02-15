@@ -1,4 +1,6 @@
 # EasyFin (Ver. Alpha)
+### <span style="color:orange">Projeto descontinuado nessa linguagem</span>
+#### Agora encontra-se no [repositório do front-end](https://github.com/arthurrivas/spa-easy-fin) e no [repositório do back-end](https://github.com/arthurrivas/api-easy_fyn).
 **[PT-BR]**
 O projeto consiste na elaboração de um website para cadastro de alunos e professores para visualização de notícias e cadastramento de questões. O projeto encontra-se em desenvolvimento, feito em Python utilizando o **Flask** no backend e bootstrap, jquery e javascript no frontend. O banco de dados utilizado é o SQLite.<br>
 * O CRUD já está funcional;<br>
